@@ -11,4 +11,9 @@ public class PortalController {
     public String portal() {
         return "index";
     }
+
+    @RequestMapping("/hello")
+    public String success() {
+        return "success";
+    }
 }
