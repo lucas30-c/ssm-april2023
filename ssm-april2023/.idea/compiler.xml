@@ -6,9 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring_mvc_helloworld" />
+        <module name="spring_mvc_helloworld (1)" />
+        <module name="spring_mvc_helloworld (2)" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="spring_mvc_demo" target="1.8" />
+      <module name="spring_mvc_helloworld" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
