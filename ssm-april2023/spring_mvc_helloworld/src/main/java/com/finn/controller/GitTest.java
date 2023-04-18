@@ -7,7 +7,6 @@ public class GitTest {
         System.out.println("Hello git!");
         System.out.println("Hello git!");
 
-        System.out.println("Hello git 5!");
-        System.out.println("Hello git 6!");
+        System.out.println("Master change.");
     }
 }
