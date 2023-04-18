@@ -20,6 +20,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
     如果浏览器的请求方式不匹配，则报405.
     method属性是RequestMethod类型的数组。
     匹配数组中任何一种请求方式即可
+
+4.
+    SpringMVC支持ant风格的路径
+    在@RequestMapping注解的vvalue属性中设置一些特殊字符
+    ?: 任意的单个字符（不包括?）
+    *: 表示任意个数的任意字符（不包括?和/）
+    **: 任意层数的任意目录，注意使用方式只能**写在双斜线中，前后不能有任何其他字符。
+
  */
 
 @Controller
@@ -28,9 +36,16 @@ public class TestRequestMappingController {
 
     //只有表单提交的请求方式是POST，剩下全部是GET
     @RequestMapping(value = {"/hello", "/bennett"},
-                    method = RequestMethod.GET
-    ) //设置请求映射的具体信息
+                    method = RequestMethod.GET) //设置请求映射的具体信息
     public String hello() {
         return "success";
     }
+
+    //@RequestMapping("/a?a/ant")
+    //@RequestMapping("/a*a/ant")
+    @RequestMapping("/**/ant")
+    public String testAnt() {
+        return "success";
+    }
+
 }
