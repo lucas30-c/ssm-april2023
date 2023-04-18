@@ -2,6 +2,7 @@ package com.finn.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /*
 1.
@@ -18,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/test") //设置请求映射的基础信息
 public class TestRequestMappingController {
 
-    @RequestMapping({"/hello", "/bennett"}) //设置请求映射的具体信息
+    //只有表单提交的请求方式是POST，剩下全部是GET
+    @RequestMapping(value = {"/hello", "/bennett"},
+                    method = RequestMethod.GET
+    ) //设置请求映射的具体信息
     public String hello() {
         return "success";
     }
