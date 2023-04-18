@@ -11,6 +11,8 @@
     <form th:action="@{/hello}" method="post">
         <input type="submit" value="测试@RequestMapping注解的method属性">
     </form>
-    <a th:href="@{/test/aka/ant}">测试@RequestMapping注解的value属性</a><br>
+    <a th:href="@{/test/aka/ant}">测试@RequestMapping支持ant风格的路径</a><br>
+    <a th:href="@{/test/restful/finn/1}">测试@RequestMapping注解的value属性的占位符</a><br>
+    <!--finn和1只是一个默认参数，用户也可以传递自己的参数-->
 </body>
 </html>

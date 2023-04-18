@@ -1,6 +1,7 @@
 package com.finn.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,6 +29,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
     *: 表示任意个数的任意字符（不包括?和/）
     **: 任意层数的任意目录，注意使用方式只能**写在双斜线中，前后不能有任何其他字符。
 
+5. @RequestMapping使用路径中的占位符
+    传统：/deleteUser?id=1
+    restful：/user/delete/1
+    需要在@RequestMapping的value属性中所设置的路径中，用{xxx}表示路径中的数据
+    再用@PathVariable，将占位符标识的值和控制器方法的形参进行绑定。
  */
 
 @Controller
@@ -45,6 +51,13 @@ public class TestRequestMappingController {
     //@RequestMapping("/a*a/ant")
     @RequestMapping("/**/ant")
     public String testAnt() {
+        return "success";
+    }
+
+    @RequestMapping("/restful/{username}/{id}")
+    public String testRestful(@PathVariable("id") Integer id, @PathVariable("username") String userName) {
+        System.out.println("id: " + id);
+        System.out.println("username: " + userName);
         return "success";
     }
 
