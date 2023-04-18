@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
     作用：通过请求的路径匹配请求。
     value属性是数组类型，即当前浏览器所发送的请求路径匹配value属性中的任何一个值。
     则当前请求就会被注解所标识的方法处理。
+
+3.
+    @RequestMapping注解的Mapping属性。
+    作用：通过请求方式匹配请求。
+    如果浏览器的请求方式不匹配，则报405.
+    method属性是RequestMethod类型的数组。
+    匹配数组中任何一种请求方式即可
  */
 
 @Controller
