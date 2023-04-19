@@ -36,6 +36,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
     restful：/user/delete/1
     需要在@RequestMapping的value属性中所设置的路径中，用{xxx}表示路径中的数据
     再用@PathVariable，将占位符标识的值和控制器方法的形参进行绑定。
+
+6. 解决请求参数的乱码问题
+   在web.xml中配置Spring的编码过滤器CharacterEncodingFilter
  */
 
 @Controller
