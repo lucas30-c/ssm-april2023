@@ -63,6 +63,10 @@ public class TestParamsController {
         return "success";
     }
 
+    /*
+        1. pojo要有getter, setter
+        2. 表单中input的name属性要和pojo中getter和setter的属性对应（一致）
+     */
     @RequestMapping("/param/pojo")
     public String getParamByPojo(User user) {
         System.out.println(user);
