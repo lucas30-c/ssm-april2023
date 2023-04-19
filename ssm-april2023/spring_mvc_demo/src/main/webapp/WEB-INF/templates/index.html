@@ -14,5 +14,28 @@
     <a th:href="@{/test/aka/ant}">测试@RequestMapping支持ant风格的路径</a><br>
     <a th:href="@{/test/restful/finn/1}">测试@RequestMapping注解的value属性的占位符</a><br>
     <!--finn和1只是一个默认参数，用户也可以传递自己的参数-->
+    <hr>
+
+    <form th:action="@{/param}" method="post" title="原生ServletAPI">
+            <h5>在原生ServletAPI中，使用request.getParameter获取请求参数</h5>
+            用户名：<input type="text" name="username"><br>
+            密码：<input type="password" name="password"><br>
+            <input type="submit" value="登录"><br>
+    </form>
+
+<!--    <form th:action="@{/param}" method="post">-->
+<!--            <h5>登录表单</h5>-->
+<!--            用户名：<input type="text" name="username"><br>-->
+<!--            密码：<input type="password" name="password"><br>-->
+<!--            <input type="submit" value="登录"><br>-->
+<!--    </form>-->
+
+    <form th:action="@{/param}" method="post">
+        <h5>登录表单2</h5>
+        用户名：<input type="text" name="userName"><br>
+        密码：<input type="password" name="password"><br>
+        <input type="submit" value="登录"><br>
+    </form>
+
 </body>
 </html>

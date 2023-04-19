@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /*
+本质就是浏览器发送的请求和控制器方法创建映射关系。
+
 1.
     在基础路径下（上下文），加上/test/hello 就是要访问的地址
     相当有用！！
