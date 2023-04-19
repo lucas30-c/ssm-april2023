@@ -18,20 +18,27 @@
 
     <form th:action="@{/param/servletAPI}" method="post" title="原生ServletAPI">
             <h5>在原生ServletAPI中，使用request.getParameter获取请求参数</h5>
-            用户名：<input type="text" name="username"><br>
+            用户名：<input type="text" name="userName"><br>
             密码：<input type="password" name="password"><br>
             <input type="submit" value="登录"><br>
     </form>
 
 <!--    <form th:action="@{/param}" method="post">-->
 <!--            <h5>登录表单</h5>-->
-<!--            用户名：<input type="text" name="username"><br>-->
+<!--            用户名：<input type="text" name="userName"><br>-->
 <!--            密码：<input type="password" name="password"><br>-->
 <!--            <input type="submit" value="登录"><br>-->
 <!--    </form>-->
 
     <form th:action="@{/param}" method="post">
         <h5>登录表单2</h5>
+        用户名：<input type="text" name="userName"><br>
+        密码：<input type="password" name="password"><br>
+        <input type="submit" value="登录"><br>
+    </form>
+
+    <form th:action="@{/param/pojo}" method="post">
+        <h5>使用pojo接收表单信息</h5>
         用户名：<input type="text" name="userName"><br>
         密码：<input type="password" name="password"><br>
         <input type="submit" value="登录"><br>
