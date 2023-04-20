@@ -6,6 +6,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /*
@@ -19,6 +21,9 @@ import java.util.Map;
 
     2-4 本质是一样的，使用org.springframework.validation.support.BindingAwareModelMap
     在底层中这些类型的形参都是通过BindingAwareModelMap创建的。
+
+    在idea中配置preserve sessions across restarts and redeploys，使得重启服务器不会清空session
+    回顾：session的钝化和活化。钝化是序列化的过程。
  */
 @Controller
 public class TestScopeController {
@@ -79,6 +84,20 @@ public class TestScopeController {
         return "success";
     }
 
+    @RequestMapping("/test/session")
+    public String testSession(HttpSession session) {
+        session.setAttribute("testSessionScope", "Hello, session");
+        session.setAttribute("testSessionScope", "Session是一次会话，也即浏览器开启到浏览器关闭的过程");
+        return "success";
+    }
+
+    @RequestMapping("/test/application")
+    public String testApplication(HttpSession session) {
+        ServletContext servletContext = session.getServletContext();
+        servletContext.setAttribute("testApplicationScope", "Hello, application");
+        servletContext.setAttribute("testApplicationScope", "应用域是服务器运行的整个过程。");
+        return "success";
+    }
 
 }
 
