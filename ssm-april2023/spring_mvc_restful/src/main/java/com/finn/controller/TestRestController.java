@@ -35,5 +35,9 @@ public class TestRestController {
         return "success";
     }
 
-
+    @RequestMapping(value="/user", method = RequestMethod.POST)
+    public String insertUser() {
+        System.out.println("添加用户信息");
+        return "success";
+    }
 }
