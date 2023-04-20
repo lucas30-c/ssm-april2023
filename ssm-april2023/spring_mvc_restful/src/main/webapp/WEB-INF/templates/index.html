@@ -5,12 +5,35 @@
     <title>首页</title>
 </head>
 <body>
-  <h1>Restful Index</h1>
-  <a th:href="@{/user}">查询所有用户信息</a>
-  <a th:href="@{/user/1}">查询id=1用户信息</a>
-  <a th:href="@{/user}">查询所有用户信息</a>
+<h1>Restful Index</h1>
+<a th:href="@{/user}">查询所有用户信息</a>
+<a th:href="@{/user/1}">查询id=1用户信息</a>
+<!--      <a th:href="@{/user}">查询所有用户信息</a>-->
 <form th:action="@{/user}" method="post">
     <input type="submit" value="添加用户信息">
+</form>
+<div>
+    当表单被提交时，浏览器仍然会使用 POST 请求。
+    然而，HiddenHttpMethodFilter 过滤器会检查表单中隐藏的 _method 字段。
+    如果该字段存在并且值为 "put"，过滤器会将请求包装为一个新的 PUT 请求，
+    并将其传递给后续的处理程序。
+    因此，在服务器端，请求将被视为 PUT 请求进行处理。
+    例如:<br>
+<pre><code>&lt;form th:action="@{/user}" method="post"&gt;
+    &lt;!-- 隐藏域,帮助用户转换请求方式 --&gt;
+    &lt;input type="hidden" name="_method" value="put"&gt;
+    &lt;input type="submit" value="修改用户信息"&gt;
+&lt;/form&gt;</code></pre>
+</div>
+<form th:action="@{/user}" method="post">
+    <!--        隐藏域,帮助用户转换请求方式-->
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="修改用户信息">
+</form>
+<form th:action="@{/user/2}" method="post">
+    <!-- 隐藏域,帮助用户转换请求方式 -->
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="删除用户信息">
 </form>
 </body>
 </html>
