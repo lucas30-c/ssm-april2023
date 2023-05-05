@@ -23,6 +23,7 @@
     </filter-mapping>
 
     <!--    设置SpringMVC的前端控制器-->
+    <!--    DispatcherServlet处理不了静态资源-->
     <servlet>
         <servlet-name>Finn's Restful</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

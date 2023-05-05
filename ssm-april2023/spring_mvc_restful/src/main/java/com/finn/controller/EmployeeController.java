@@ -1,5 +1,6 @@
-package com.finn.dao;
+package com.finn.controller;
 
+import com.finn.dao.EmployeeDao;
 import com.finn.pojo.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

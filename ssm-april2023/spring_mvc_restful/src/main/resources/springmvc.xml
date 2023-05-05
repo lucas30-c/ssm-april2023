@@ -31,6 +31,17 @@
         </property>
     </bean>
 
+    <!--配置默认的servlet处理静态资源  p150-->
+    <!--当前的资源先让DispatcherServlet处理,如果处理不了,再由默认的Servlet处理-->
+    <!--当前工程的web.xml配置的前端控制器DispatcherServlet的url-pattern是/
+        tomcat的web.xml配置的DefaultServlet的url-patternyes/
+        此时浏览器发送的请求会优先被DispatcherServlet处理,但是DispatcherServlet无法处理静态资源\
+        如果配置了<mvc:default-servlet-handler/>,此时浏览器发送的所有请求都会被DefaultServlet处理
+        而若配置了<mvc:default-servlet-handler/>和<mvc:annotation-driven/>
+        浏览器发送的请求会先被DispatcherServlet处理,无法处理再交给DefaultServlet处理
+    -->
+    <mvc:default-servlet-handler/>
+
     <!-- 开启mvc的注解驱动-->
     <mvc:annotation-driven/>
     <!--    视图控制器：为当前请求直接设置视图名称，实现页面跳转-->
