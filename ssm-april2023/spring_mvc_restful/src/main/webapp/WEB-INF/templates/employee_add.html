@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+</head>
+<body>
+<!--在这个表单中，th:action属性设置了表单提交时请求的URL地址。-->
+<!--当用户填写表单并点击“add”按钮时，表单数据将通过POST请求发送到服务器上的"/employee/a"路径。-->
+  <form th:action="@{/employee/a}" method="post">
+    <table>
+      <tr>
+        <th colspan="2">Add an employee</th>
+      </tr>
+      <tr>
+        <td>lastName</td>
+        <td>
+          <input type="text" name="lastName">
+        </td>
+      </tr>
+      <tr>
+        <td>email</td>
+        <td>
+          <input type="text" name="email">
+        </td>
+      </tr>
+      <tr>
+        <td>gender</td>
+        <td>
+          <input type="radio" name="gender" value="1">male
+          <input type="radio" name="gender" value="0">female
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="add">
+        </td>
+      </tr>
+
+    </table>
+  </form>
+</body>
+</html>

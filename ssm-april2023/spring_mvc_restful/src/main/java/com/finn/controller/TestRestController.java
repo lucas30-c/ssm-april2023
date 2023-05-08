@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 如果要发送put和delete请求,需要在web.xml中配置一个过滤器HiddenHttpMethodFilter
  * 配置了过滤器后,发送的请求要满足两个条件,才能将请求方式转化为put或delete
  * 1. 当前请求必须为post
- * 2. 当前请求必须传输请求参数_method,_method才是最终的请求方式.
+ * 2. 当前请求必须传输请求参数_method,_method才是最终的请求方式. （这点非常重要！）
  *
  * Spring Framework 提供了一个名为 HiddenHttpMethodFilter 的过滤器，
  * 可以让您使用一个隐藏的 _method 参数来指定实际的 HTTP 方法。
@@ -46,6 +46,7 @@ public class TestRestController {
         return "success";
     }
 
+    //添加用Post
     @RequestMapping(value="/user", method = RequestMethod.POST)
     public String insertUser() {
         System.out.println("添加用户信息");

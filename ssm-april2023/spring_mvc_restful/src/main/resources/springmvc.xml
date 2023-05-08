@@ -49,4 +49,5 @@
             此时必须设置一个标签<mvc:annotation-driven/>
     -->
     <mvc:view-controller path="/" view-name="index"></mvc:view-controller>
+    <mvc:view-controller path="/to/add" view-name="employee_add"></mvc:view-controller>
 </beans>

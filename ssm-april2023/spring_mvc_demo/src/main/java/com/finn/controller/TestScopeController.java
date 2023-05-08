@@ -45,7 +45,8 @@ public class TestScopeController {
         /*
             这段代码是一个使用Spring MVC框架的简单示例，它演示了如何在控制器中使用ModelAndView对象向请求域共享数据。在这个例子中，有一个名为TestScopeController的控制器类，该类中定义了一个名为testMAV的方法，该方法处理/test/mav的请求。
 
-            域对象（Domain Object）通常指代在Web应用程序的特定范围内存储数据的对象。在Spring MVC中，有三个主要的域对象：请求域（Request Scope）、会话域（Session Scope）和应用域（Application Scope）。这些域对象的生命周期和作用范围各有不同，它们分别对应于HttpServletRequest、HttpSession和ServletContext对象。
+            域对象（Domain Object）通常指代在Web应用程序的特定范围内存储数据的对象。在Spring MVC中，有三个主要的域对象：请求域（Request Scope）、会话域（Session Scope）和应用域（Application Scope）。这些域对象的生命周期和作用范围各有不同，
+            它们分别对应于HttpServletRequest、HttpSession和ServletContext对象。
 
             请求域（本节学习的）（Request Scope）：在单次请求中有效，当请求结束时销毁。请求域主要用于存储与特定请求相关的数据。
             会话域（Session Scope）：在整个用户会话期间有效，当会话结束时销毁。会话域用于存储与特定用户会话相关的数据。
