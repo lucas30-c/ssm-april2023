@@ -25,7 +25,7 @@
         <td th:text="${employee.gender}"></td>
         <td>
             <a href="">delete</a>
-            <a href="">update</a>
+            <a th:href="@{'/employee/'+${employee.id}}">update</a>
         </td>
     </tr>
 </table>
