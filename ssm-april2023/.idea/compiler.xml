@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring_mvc_helloworld (1)" />
         <module name="spring_mvc_helloworld (2)" />
-        <module name="spring_mvc_restful" />
+        <module name="spring_mvc_restful (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
+      <module name="spring_mvc_ajax" target="1.8" />
       <module name="spring_mvc_demo" target="1.8" />
       <module name="spring_mvc_helloworld" target="1.8" />
+      <module name="spring_mvc_restful" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
