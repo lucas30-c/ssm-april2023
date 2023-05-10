@@ -4,6 +4,7 @@ import com.finn.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -63,4 +64,34 @@ public class AjaxController {
 //        System.out.println(user);
 //        response.getWriter().write("Hello, RequestBody.");
 //    }
+
+    /*
+        @ResponseBody: 将所标识的控制器方法的返回值作为响应报文的响应体响应到浏览器
+        用的非常多！
+        以后响应的一般是一个java对象
+
+        使用@ResponseBody响应浏览器json格式的数据
+        a. 导入jackson依赖
+        b. 在SpringMVC的配置文件中设置<mvc:annotation-driven />
+        c. 将需要转换为json字符串的java对象直接作为控制器方法的返回值，使用@RequestBody注解标识控制器方法，
+           就可以将java对象转换为json字符串，并响应到浏览器。
+
+        常用的Java对象转换为json的结果：
+        实体类，map一律转为json对象
+        list转为json数组
+     */
+
+    @RequestMapping("/test/ResponseBody")
+    @ResponseBody
+    public String testResponseBody() {
+        return "success";
+    }
+
+    @RequestMapping("/test/ResponseBody/json")
+    @ResponseBody
+    public User testResponseBodyJson() {
+        User user = new User(1001, "admin", "12345", 20, "Male");
+        return user;
+
+    }
 }

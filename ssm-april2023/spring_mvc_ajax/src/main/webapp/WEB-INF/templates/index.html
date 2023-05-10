@@ -10,6 +10,8 @@
     <h1></h1>
     <input type="button" value="Testing SpringMVC to address ajax requests" @click="testAjax()"><br>
     <input type="button" value="Use @RequestBody Annotation to address request parameters in Json format" @click="testRequestBody()"><br>
+    <a th:href="@{/test/ResponseBody}">Testing @ResponseBody Annotation respond to browser's data</a><br>
+    <input type="button" value="Use @ResponseBody Annotation to response data in Json format" @click="testResponseBody()"><br>
 
     <!--      这里指向vue实例中的testAjax()方法-->
 </div>
@@ -95,6 +97,13 @@
                 ).then(response => {
                     console.log(response.data)
                 })
+            },
+            testResponseBody() {
+                axios.post("/SpringAjax/test/ResponseBody/json").then(
+                    response => {
+                        console.log(response.data)
+                    }
+                )
             }
         }
     });
