@@ -5,59 +5,89 @@
     <title>Index Page</title>
 </head>
 <body>
-  <h1>Index Page</h1>
-  <div id="app">
-      <h1></h1>
-      <input type="button" value="Testing SpringMVC to address ajax requests" @click="textAjax()">
-  </div>
-  <script type="text/javascript" th:src="@{/js/vue.js}"></script>
-  <script type="text/javascript" th:src="@{/js/axios.min.js}"></script>
-  <script type="text/javascript">
-      /**
-       *       let vue = new Vue()({
-       *           el: "#app",
-       *           method:{
-       *               testAjax() {
-       *                   axios({
-       *                       url:"",       //请求路径
-       *                       method:"",    //请求方式
-       *                       //对params:{}
-       *                       //以name=value&name=value的方式发送的请求参数，不管使用请求方式为get还是post
-       *                       //请求参数都会被拼接到请求地址后
-       *                       //此种方式的请求参数可通过request.getParameter()获取
-       *                       params:{},
-       *                       //对data
-       *                       //以json格式来发送的请求参数
-       *                       // 请求参数会被保存到请求报文的请求体传送到服务器
-       *                       //此种方式的请求参数不可以通过request.getParameter()获取
-       *                       data:{}
-       *                   }).then(response=>{
-       *                       console.log(response.data)
-       *                   })
-       *               }
-       *           }
-       *       })
-       */
+<h1>Index Page</h1>
+<div id="app">
+    <h1></h1>
+    <input type="button" value="Testing SpringMVC to address ajax requests" @click="testAjax()">
+    <!--      这里指向vue实例中的testAjax()方法-->
+</div>
+<script type="text/javascript" th:src="@{/js/vue.js}"></script>
+<script type="text/javascript" th:src="@{/js/axios.min.js}"></script>
+<script type="text/javascript">
+    /**
+     *       let vue = new Vue()({
+     *           el: "#app",
+     *           method:{
+     *               testAjax() {
+     *                   axios({
+     *                       url:"",       //请求路径
+     *                       method:"",    //请求方式
+     *                       //对params:{}
+     *                       //以name=value&name=value的方式发送的请求参数，不管使用请求方式为get还是post
+     *                       //请求参数都会被拼接到请求地址后
+     *                       //此种方式的请求参数可通过request.getParameter()获取
+     *                       params:{},
+     *                       //对data
+     *                       //以json格式来发送的请求参数
+     *                       // 请求参数会被保存到请求报文的请求体传送到服务器
+     *                       //此种方式的请求参数不可以通过request.getParameter()获取
+     *                       data:{}
+     *                   }).then(response=>{
+     *                       console.log(response.data)
+     *                   })
+     *               }
+     *           }
+     *       })
+     */
 
 
-      let vue = new Vue()({
-          el: "#app",
-          method:{
+    let vue = new Vue({
+        el: "#app",
+        methods: {
             testAjax() {
                 //这里要查axio文档
                 //注意get没有请求体
                 //response 是服务器返回的对象
+                /*
+                  当客户端（浏览器）通过ajax发起POST请求到/SpringMVC/test/ajax?id=1001时，
+                  服务器接收到这个请求，并将其路由到controller里的testAjax方法处理。
+                  这个方法接收两个参数：一个是id，它从查询字符串参数中提取；
+                  另一个是HttpServletResponse，它代表服务器对客户端的响应。
+
+                 */
+                /*
+                   在此例子中，Vue方法名（testAjax）和Spring MVC controller方法名（testAjax）恰好是一样的，
+                   但这其实是巧合，它们并不需要一样。关键的连接是URL路径（/SpringMVC/test/ajax），而不是方法名。
+
+                   当你在Vue的testAjax方法中发送一个axios请求，你指定了一个URL路径（/SpringMVC/test/ajax）。
+                   这个URL路径是Vue方法和Spring MVC controller方法之间的主要连接。
+                   Spring MVC的路由系统会根据这个URL路径找到对应的controller方法并调用它。
+                 */
                 axios.post(
-                    "/SpringMVC/test/ajax?id=1001",
-                    {username: "admin", password:"123456"}
-                ).then(response=>{
+                    "/SpringAjax/test/ajax?id=1001", //给出上下文路径
+                    {username: "admin", password: "123456"}
+                ).then(response => {
                     console.log(response.data)
                 })
+
+                /*
+                    在这段axios请求中，第二个参数 {username: "admin", password: "123456"} 是你要发送给服务器的数据，也称为请求的“主体”或“载荷”。
+
+                    你使用的是 axios.post 方法，这是一个HTTP POST请求。POST请求的一个主要特性是它可以包含一个请求主体，
+                    这个主体可以包含你想要发送给服务器的任何数据。在这个例子中，你发送的数据是一个包含两个属性的对象：username 和 password。
+
+                    这个请求主体和 ?id=1001 是有区别的。
+                    ?id=1001 是URL中的查询字符串参数，它是请求的一部分，但并不属于请求主体。
+                    查询字符串参数通常用于GET请求，而请求主体通常用于POST请求。
+
+                    在Chrome浏览器的开发者工具中，你可以在"Network"选项卡中选择一个特定的HTTP请求，
+                    然后在"Headers"选项卡下的"Request Payload"部分查看请求主体（载荷）。
+                 */
             }
-          }
-      })
+        }
+    });
 
 
-  </script>
+</script>
 </body>
 </html>
