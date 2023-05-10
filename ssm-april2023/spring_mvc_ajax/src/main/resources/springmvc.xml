@@ -40,10 +40,10 @@
         而若配置了<mvc:default-servlet-handler/>和<mvc:annotation-driven/>
         浏览器发送的请求会先被DispatcherServlet处理,无法处理再交给DefaultServlet处理
     -->
-    <mvc:default-servlet-handler/>
+    <mvc:default-servlet-handler />
 
     <!-- 开启mvc的注解驱动-->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven />
     <!--    视图控制器：为当前请求直接设置视图名称，实现页面跳转-->
     <!--    如果设置视图控制器,则只有视图控制器所设置的请求会被处理,其他请求将全部404
             此时必须设置一个标签<mvc:annotation-driven/>
