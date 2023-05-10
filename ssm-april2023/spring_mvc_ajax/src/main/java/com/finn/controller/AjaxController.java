@@ -20,7 +20,7 @@ public class AjaxController {
         response.getWriter().write("hello, axios"); //涉及到流
         /*
                     当客户端（浏览器）通过ajax发起POST请求到/SpringMVC/test/ajax?id=1001时，
-                    服务器接收到这个请求，并将其路由到vue里的testAjax方法处理。
+                    服务器接收到这个请求，并将其路由到controller里的testAjax方法处理。
                     这个方法接收两个参数：一个是id，它从查询字符串参数中提取；
                     另一个是HttpServletResponse，它代表服务器对客户端的响应。
 
@@ -81,10 +81,14 @@ public class AjaxController {
         list转为json数组
      */
 
+    /*
+        testResponseBody方法返回了一个字符串"Hello Finn"。由于testResponseBody方法被@ResponseBody注解修饰，Spring MVC将直接将这个字符串写入HTTP响应的body，而不是尝试找到名为"success"的视图。因此，浏览器将接收到一个只包含"success"的HTTP响应。
+        在浏览器中，你将看到一个只有"Hello Finn"文字的页面。
+     */
     @RequestMapping("/test/ResponseBody")
     @ResponseBody
     public String testResponseBody() {
-        return "success";
+        return "Hello, Finn!";
     }
 
     @RequestMapping("/test/ResponseBody/json")
@@ -92,6 +96,6 @@ public class AjaxController {
     public User testResponseBodyJson() {
         User user = new User(1001, "admin", "12345", 20, "Male");
         return user;
-
+        //把user通过json的格式响应出去
     }
 }

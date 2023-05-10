@@ -89,7 +89,7 @@
                     然后在"Headers"选项卡下的"Request Payload"部分查看请求主体（载荷）。
                  */
             },
-            testRequestBody() {
+            testRequestBody() { //测试通过@RequestBody注解获取Post请求的请求体
                 axios.post(
                     "/SpringAjax/test/RequestBody/json",
                     {username: this.username, password: this.password, age: this.age,
