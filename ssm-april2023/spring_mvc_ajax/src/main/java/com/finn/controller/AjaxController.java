@@ -85,6 +85,12 @@ public class AjaxController {
         testResponseBody方法返回了一个字符串"Hello Finn"。由于testResponseBody方法被@ResponseBody注解修饰，Spring MVC将直接将这个字符串写入HTTP响应的body，而不是尝试找到名为"success"的视图。因此，浏览器将接收到一个只包含"success"的HTTP响应。
         在浏览器中，你将看到一个只有"Hello Finn"文字的页面。
      */
+        /*
+            "hello world" 就是 HTTP 响应的 body。
+            使用了 @ResponseBody 注解后，Spring 会将方法的返回值作为 HTTP 响应的 body，
+            并且默认会把这个 body 的内容类型设置为 text/plain，
+            然后直接发送给客户端（在这个例子中，客户端就是你的浏览器）。
+         */
     @RequestMapping("/test/ResponseBody")
     @ResponseBody
     public String testResponseBody() {
