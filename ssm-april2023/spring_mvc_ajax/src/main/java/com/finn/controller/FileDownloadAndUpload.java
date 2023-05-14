@@ -10,10 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.util.UUID;
 
 /**
  * 文件上传的要求：
@@ -58,6 +56,12 @@ public class FileDownloadAndUpload {
     public String testUpload(MultipartFile photo, HttpSession httpSession) throws IOException {
         //获取上传文件的文件名
         String filename = photo.getOriginalFilename();
+        //获取上传的文件的后缀名
+        String suffixName = filename.substring(filename.lastIndexOf("."));
+        //获取uuid
+        String uuid = UUID.randomUUID().toString();
+        //拼接一个新的文件名
+        filename = uuid + suffixName;
         //获取ServletContext对象
         ServletContext servletContext = httpSession.getServletContext();
         //获取当前工程下photo目录的真实路径
