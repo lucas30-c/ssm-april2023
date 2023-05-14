@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -14,8 +15,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * 文件上传的要求：
+ * 1. form表单的请求方式必须为post
+ * 2. form表单必须设置属性enctype="multipart/form-data"
+ *
+ */
+
 @Controller
-public class FileDownload {
+public class FileDownloadAndUpload {
 
     @RequestMapping("/test/download")
     public ResponseEntity<byte[]> testResponseEntity(HttpSession session) throws
@@ -44,5 +52,26 @@ public class FileDownload {
         return responseEntity;
 
         //return "success";
+    }
+
+    @RequestMapping("/test/upload")
+    public String testUpload(MultipartFile photo, HttpSession httpSession) throws IOException {
+        //获取上传文件的文件名
+        String filename = photo.getOriginalFilename();
+        //获取ServletContext对象
+        ServletContext servletContext = httpSession.getServletContext();
+        //获取当前工程下photo目录的真实路径
+        String photoPath = servletContext.getRealPath("photo");
+        //创建photoPath对应的File对象
+        File file = new File(photoPath);
+        //判断file所对应目录是否存在
+        if (!file.exists()) {
+            file.mkdir();
+        }
+
+        String finalPath = photoPath + File.separator + filename;
+        //上传文件
+        photo.transferTo(new File(finalPath));
+        return "success";
     }
 }

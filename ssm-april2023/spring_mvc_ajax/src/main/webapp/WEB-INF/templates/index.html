@@ -9,11 +9,18 @@
 <div id="app">
     <h1></h1>
     <input type="button" value="Testing SpringMVC to address ajax requests" @click="testAjax()"><br>
-    <input type="button" value="Use @RequestBody Annotation to address request parameters in Json format" @click="testRequestBody()"><br>
+    <input type="button" value="Use @RequestBody Annotation to address request parameters in Json format"
+           @click="testRequestBody()"><br>
     <a th:href="@{/test/ResponseBody}">Testing @ResponseBody Annotation respond to browser's data</a><br>
-    <input type="button" value="Use @ResponseBody Annotation to response data in Json format" @click="testResponseBody()"><br>
+    <input type="button" value="Use @ResponseBody Annotation to response data in Json format"
+           @click="testResponseBody()"><br>
 
     <a th:href="@{/test/download}">Download an image</a>
+    <!--    表单必须按post方式上传-->
+    <form th:action="@{/test/upload}" method="post" enctype="multipart/form-data">
+        Avatar<input type="file" name="photo"><br>
+        <input type="submit" name="upload"><br>
+    </form>
 
     <!--      这里指向vue实例中的testAjax()方法-->
 </div>
@@ -94,8 +101,10 @@
             testRequestBody() { //测试通过@RequestBody注解获取Post请求的请求体
                 axios.post(
                     "/SpringAjax/test/RequestBody/json",
-                    {username: this.username, password: this.password, age: this.age,
-                    gender: this.gender}
+                    {
+                        username: this.username, password: this.password, age: this.age,
+                        gender: this.gender
+                    }
                 ).then(response => {
                     console.log(response.data)
                 })
