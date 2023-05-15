@@ -1,7 +1,5 @@
 package com.finn.ssm.pojo;
 
-import javax.xml.soap.SAAJResult;
-
 public class Employee {
     private Integer empId;
 

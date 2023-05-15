@@ -6,4 +6,7 @@
 
 <mapper namespace="com.finn.ssm.mapper.EmployeeMapper">
 
+    <select id="getAllEmployees" resultType="Employee">
+        select * from t_emp
+    </select>
 </mapper>

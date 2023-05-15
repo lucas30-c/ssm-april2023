@@ -26,6 +26,6 @@
 <!--    </environments>-->
     <!--引入映射文件-->
     <mappers>
-        <mapper resource="mappers/UserMapper.xml"/>
+        <mapper resource="com/finn/ssm/mapper/EmployeeMapper.xml"/>
     </mappers>
 </configuration>
