@@ -42,7 +42,6 @@ public class EmployeeController {
     public String getAllEmployees(Model model) {
         //查到数据希望展示到页面中就要共享到域对象里——Model
         List<Employee> list = employeeService.getAllEmployees();
-        //将员工信息在请求域中共享
         model.addAttribute("list", list);
         //跳转到employee_list.html
         return "employee_list";
