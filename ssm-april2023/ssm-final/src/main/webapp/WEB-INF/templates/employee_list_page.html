@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee List Page</title>
+  <link rel="stylesheet" th:href="@{/static/css/index_work.css}">
+</head>
+<body>
+<table>
+  <tr>
+    <th colspan="6">Employee List</th>
+  </tr>
+  <tr>
+    <th>Sequence#</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Operation</th>
+  </tr>
+  <tr th:each="employee, status : ${page.list}">
+    <td th:text="${status.count}"></td>
+    <td th:text="${employee.empName}"></td>
+    <td th:text="${employee.age}"></td>
+    <td th:text="${employee.gender}"></td>
+    <td th:text="${employee.email}"></td>
+    <td>
+      <a href="">Delete</a>
+      <a href="">Modify</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
