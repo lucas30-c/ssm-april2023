@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:color="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>Employee List Page</title>
@@ -30,5 +30,16 @@
     </td>
   </tr>
 </table>
+<div style="text-align: center;">
+  <a th:if="${page.hasPreviousPage}" th:href="@{/employee/page/1}">First Page</a>
+<!--  Thymeleaf中，往路径里添加变量必须采用-->
+  <a th:if="${page.hasPreviousPage}" th:href="@{'/employee/page/' + ${page.prePage}}" >Previous Page</a>
+  <span th:each="num : ${page.navigatepageNums}">
+    <a th:if="${page.pageNum == num}" style="color: red;" th:text="'[' + ${num} + ']'" th:href="@{'/employee/page/' + ${num}}"></a>
+    <a th:if="${page.pageNum != num}" th:href="@{'/employee/page/' + ${num}}" th:text="${num}"></a>
+  </span>
+  <a th:if="${page.hasNextPage}" th:href="@{'/employee/page/' + ${page.nextPage}}" >Next Page</a>
+  <a th:if="${page.hasNextPage}" th:href="@{'/employee/page/' + ${page.pages}}" >Last Page</a>
+</div>
 </body>
 </html>
