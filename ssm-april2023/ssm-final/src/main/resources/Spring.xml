@@ -27,6 +27,15 @@
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
         <!--        设置数据源-->
         <property name="dataSource" ref="dataSource"></property>
+        <!--        设置类型别名所对应的包-->
+        <property name="typeAliasesPackage" value="com.finn.ssm.pojo"></property>
+        <!--        mapperLocation 标签用来设置映射文件的路径，只有映射文件的包和mapper接口的包不一致时需要设置-->
+
+    </bean>
+    <!--    非常重要！！！-->
+    <!--    配置mapper接口的扫描，可以将指定包下所有的mapper接口，通过SqlSession创建代理实现类对象，并将这些对象交给IOC容器管理！！！-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.finn.ssm.mapper"></property>
     </bean>
 
 </beans>
