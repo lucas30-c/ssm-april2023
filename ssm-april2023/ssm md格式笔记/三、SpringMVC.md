@@ -97,7 +97,7 @@ Spring版本：5.3.1
 
 传递性导入。
 
-![29](img\29.png)
+![29](ssm md格式笔记/img/29.png)
 
 ## 2.3、配置web.xml
 
